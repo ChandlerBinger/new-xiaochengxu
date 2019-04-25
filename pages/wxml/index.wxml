@@ -1,0 +1,40 @@
+<!--pages/wxml/index.wxml-->
+
+<text>{{time}}</text> 
+<text>{{[1,2,3]}}</text>
+<view wx:if="{{length>2}}">view1</view>
+<view wx:for="{{array}}" wx:key="message">
+  {{index}}:{{item.message}}
+  <view wx:for="{{array1}}" wx:key="message">
+  {{index}}:{{item.message}}</view>
+</view>
+<view wx:for="objectArray" wx:key = "id" bindtap = "switch">
+  {{item.id}}
+</view>
+模板
+<template name="andi">
+  <view>
+    {{id}}-{{msg}}
+  </view>
+</template>
+<template is="andi" data="{{...msg}}"/>
+<view>
+import 可以引用template，但只限一层的template
+include 不能引用template
+</view>
+<view>
+公共属性： bind*, data-*等
+</view>
+<view>
+根目录中的app.wxss会注入到每个页面
+</view>
+<view>样式的尺寸单位是rpx</view>
+<view>在wxss中可以用@import './test_0.wxss'来引用样式</view>
+
+<view>js</view>
+<view></view>
+<view bindtap="helloMINA"> 小程序js是模块化的，每个js文件是一个模块，通过module.exports 或者 exports 对外暴露接口,通过require引入</view>
+<view>执行顺序：当 app.js 执行结束后，小程序会按照开发者在 app.json 中定义的 pages 的顺序，逐一执行</view>
+<view>作用域： 在每个文件中定义的额变量是局部变量。当需要使用全局变量的时，通过使用全局函数 getApp() 获取全局的实例，并给它设置相关属性值，来达到设置全局变量的目的。法二：或者在在 App({
+  globalData: 1
+}) 中设置，法二更稳妥，不会有文件执行先后问题</view>
